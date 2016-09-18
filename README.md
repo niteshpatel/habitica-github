@@ -1,1 +1,1 @@
-# habitica-github
+# habitica-github [![License](https://img.shields.io/github/license/niteshpatel/habitica-github.svg?maxAge=3600)](https://raw.githubusercontent.com/niteshpatel/habitica-github/master/LICENSE.txt) [![StackShare](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/niteshpatel/habitica-github)
