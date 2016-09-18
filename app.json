@@ -7,10 +7,10 @@
     "github"
   ],
   "env": {
-    "HABITICA_APIUSER": {
+    "HABITICA_API_USER": {
       "description": "Your Habitica User ID (found here https://habitica.com/#/options/settings/api)."
     },
-    "HABITICA_APIKEY": {
+    "HABITICA_API_KEY": {
       "description": "Your Habitica API Token (found here https://habitica.com/#/options/settings/api)."
     },
     "VALID_USERS": {
