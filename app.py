@@ -7,7 +7,7 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 VALID_USERS = map(str.strip, filter(
-    None, os.environ['USERNAME_WHITELIST'].split(',')))
+    None, os.environ['VALID_USERS'].split(',')))
 
 HABITICA_API_USER = os.environ['HABITICA_API_USER']
 HABITICA_API_KEY = os.environ['HABITICA_API_KEY']
@@ -19,7 +19,7 @@ def score_task_event(task_id, direction):
 
     data = request.json
     for commit in data.get('commits', []):
-        if commit.get('author').get('username') in VALID_USERS or not VALID_USERS:
+        if commit['author'].get('email') in VALID_USERS or not VALID_USERS:
             responses.append(score_task(task_id, direction))
 
     return jsonify(responses)
