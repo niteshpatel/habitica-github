@@ -1,0 +1,17 @@
+{
+  "name": "habitica-github",
+  "description": "Score a Habitica Task when GitHub events happen",
+  "repository": "https://github.com/niteshpatel/habitica-github",
+  "keywords": [
+    "habitica",
+    "github"
+  ],
+  "env": {
+    "HABITICA_APIUSER": {
+      "description": "Your Habitica User ID (found here https://habitica.com/#/options/settings/api)."
+    },
+    "HABITICA_APIKEY": {
+      "description": "Your Habitica API Token (found here https://habitica.com/#/options/settings/api)."
+    }
+  }
+}
