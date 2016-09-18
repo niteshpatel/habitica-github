@@ -6,14 +6,8 @@
 
 ## Installation
 
-1. Use the Deploy to Heroku button
-1. Set up a new webhook here https://github.com/[username]/[repository]/settings/hooks
-1. Set the payload url to https://[heroku-app-name].herokuapp.com/tasks/[taskId/taskAlias]/score/[direction]
+1. Use the Deploy to Heroku button (note down the app name)
+1. Set up webhooks for all your GitHub repositories you want to track (found under Settings &gt; Webhooks)
+1. Set the payload url to https://&lt;heroku app name&gt;.herokuapp.com/tasks/&lt;[taskId or taskAlias](http://habitica.wikia.com/wiki/Task_Alias)&gt;/score/up
 1. Leave the default setting of push event only
 1. Done.
-
-### Notes
-
-* Set up the webhook on any additional repositories you want to track
-* What is a taskId or taskAlias? http://habitica.wikia.com/wiki/Task_Alias
-* direction should be up or down, presumably up in this case :)
