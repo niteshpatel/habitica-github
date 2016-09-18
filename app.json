@@ -12,6 +12,9 @@
     },
     "HABITICA_APIKEY": {
       "description": "Your Habitica API Token (found here https://habitica.com/#/options/settings/api)."
+    },
+    "USERNAME_WHITELIST": {
+      "description": "Comma separated list of GitHub usernames that should be tracked (leave blank to track commits from all users)"
     }
   }
 }

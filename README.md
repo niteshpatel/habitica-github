@@ -5,7 +5,12 @@
 
 ## Installation
 
-1. Set up a new webhook here https://github.com/[username]/[reponame]/settings/hooks
-1. Set the payload url to https://[your-app-name].herokuapp.com/tasks/code-commit/score/up
+1. Use the Deploy to Heroku button above and follow the instructions
+1. Set up a new webhook here https://github.com/[username]/[repository]/settings/hooks
+1. Set the payload url to https://[heroku-app-name].herokuapp.com/tasks/code-commit/score/up
 1. Leave the other default settings of push event only
 1. Done.
+
+### Additional
+
+* Set up the webhook on any additional repositories you want to track

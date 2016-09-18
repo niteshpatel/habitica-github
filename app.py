@@ -6,8 +6,8 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-VALID_USERS = filter(
-    None, os.environ['USERNAME_WHITELIST'].split(','))
+VALID_USERS = map(str.strip, filter(
+    None, os.environ['USERNAME_WHITELIST'].split(',')))
 
 HABITICA_API_USER = os.environ['HABITICA_API_USER']
 HABITICA_API_KEY = os.environ['HABITICA_API_KEY']
