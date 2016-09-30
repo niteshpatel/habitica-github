@@ -33,7 +33,8 @@ def score_task(task_id, direction):
         'x-api-key': HABITICA_API_KEY
     }
 
-    return json.loads(requests.post(habitica_url, headers=headers).content)
+    response = requests.post(habitica_url, headers=headers)
+    return json.loads(response.content)
 
 
 if __name__ == '__main__':
