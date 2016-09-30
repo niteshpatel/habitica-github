@@ -14,7 +14,7 @@ class AppTestCase(TestCase):
         app.HABITICA_API_KEY = self.apiKey
 
     @requests_mock.mock()
-    def test_send_message_to_habitica_from_user(self, m):
+    def test_score_task(self, m):
         # arrange
         expected_headers = {
             'x-api-user': self.apiUser,
