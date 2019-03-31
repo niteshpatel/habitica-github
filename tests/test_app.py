@@ -1,6 +1,5 @@
 import json
-import mock
-from unittest import TestCase
+from unittest import mock, TestCase
 
 import requests_mock
 
@@ -41,12 +40,12 @@ class AppTestCase(TestCase):
 
         # act
         with mock.patch.object(app, 'score_task', mock.Mock(return_value=expected_response)) as mock_score_task:
-            rv = self.app.post('/tasks/task1/score/up', data=data, content_type='application/json')
+            response = self.app.post('/tasks/task1/score/up', data=data, content_type='application/json')
 
         # assert
         # noinspection PyUnresolvedReferences
         mock_score_task.assert_called_once_with('task1', 'up')
-        json_data = json.loads(rv.data)
+        json_data = response.get_json()
         self.assertEqual(json_data, [expected_response])
 
     @requests_mock.mock()
@@ -54,7 +53,7 @@ class AppTestCase(TestCase):
         # arrange
         expected_headers = {
             'x-api-user': self.api_user,
-            'x-api-key': self.api_key
+            'x-api-key': self.api_key,
         }
 
         expected_url = 'https://habitica.com/api/v3/tasks/task1/score/up'
@@ -71,4 +70,5 @@ class AppTestCase(TestCase):
         request = history[0]
         self.assertEqual(request.url, expected_url)
         self.assertEqual(request.method, 'POST')
-        self.assertDictContainsSubset(expected_headers, request.headers)
+        for item in expected_headers.items():
+            self.assertIn(item, request.headers.items())

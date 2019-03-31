@@ -1,4 +1,3 @@
-import json
 import os
 
 import flask
@@ -21,7 +20,7 @@ def score_task_event(task_id, direction):
 
 
 def score_task(task_id, direction):
-    habitica_url = 'https://habitica.com/api/v3/tasks/%s/score/%s' % (task_id, direction)
+    habitica_url = 'https://habitica.com/api/v3/tasks/{}/score/{}'.format(task_id, direction)
 
     headers = {
         'x-api-user': os.environ['HABITICA_API_USER'],
@@ -29,7 +28,7 @@ def score_task(task_id, direction):
     }
 
     response = requests.post(habitica_url, headers=headers)
-    return json.loads(response.content)
+    return response.json()
 
 
 def _get_valid_users():
