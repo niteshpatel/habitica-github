@@ -1,23 +1,23 @@
 import json
 import os
+
+import flask
 import requests
 
-from flask import Flask, request, jsonify
-
-app = Flask(__name__)
+app = flask.Flask(__name__)
 
 
 @app.route('/tasks/<task_id>/score/<direction>', methods=['POST'])
 def score_task_event(task_id, direction):
     responses = []
 
-    data = request.json
+    data = flask.request.json
     for commit in data.get('commits', []):
         valid_users = _get_valid_users()
         if commit['author'].get('email') in valid_users or not valid_users:
             responses.append(score_task(task_id, direction))
 
-    return jsonify(responses)
+    return flask.jsonify(responses)
 
 
 def score_task(task_id, direction):
