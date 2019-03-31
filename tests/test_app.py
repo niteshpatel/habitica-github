@@ -26,8 +26,7 @@ class AppTestCase(TestCase):
     def tearDown(self):
         self.os_environ_patcher.stop()
 
-    @requests_mock.mock()
-    def test_score_task_event(self, m):
+    def test_score_task_event(self):
         # arrange
         data = json.dumps({
             'commits': [
@@ -39,14 +38,14 @@ class AppTestCase(TestCase):
             ]})
 
         expected_response = {'test': 'value'}
-        app.score_task = mock.Mock(return_value=expected_response)
 
         # act
-        rv = self.app.post('/tasks/task1/score/up', data=data, content_type='application/json')
+        with mock.patch.object(app, 'score_task', mock.Mock(return_value=expected_response)) as mock_score_task:
+            rv = self.app.post('/tasks/task1/score/up', data=data, content_type='application/json')
 
         # assert
         # noinspection PyUnresolvedReferences
-        app.score_task.assert_called_once_with('task1', 'up')
+        mock_score_task.assert_called_once_with('task1', 'up')
         json_data = json.loads(rv.data)
         self.assertEqual(json_data, [expected_response])
 
